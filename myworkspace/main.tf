@@ -28,3 +28,10 @@ resource "docker_container" "nginx" {
   }
 }
 
+variable "port_from_root" {
+  default = 1234 }
+
+module "my_container" {
+  source = "./project-tf/my_modules/container_maker"
+  external_port = var.port_from_root
+}
